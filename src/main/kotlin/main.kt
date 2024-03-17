@@ -6,6 +6,7 @@ const val ERROR_LIMIT = -2
 const val ERROR_LIMIT_VK = -3
 
 fun main () {
+
     println(comission("Visa", 10_000, 0))
     println(comission("Мир", 1000, 0))
     println(comission("Vk Pay", 15_000, 20_000))
