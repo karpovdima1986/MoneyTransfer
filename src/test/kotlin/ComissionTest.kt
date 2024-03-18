@@ -1,8 +1,4 @@
 import org.junit.Test
-import ru.netology.ERROR_LIMIT
-import ru.netology.ERROR_LIMIT_VK
-import ru.netology.ERROR_TYPE
-import ru.netology.comission
 import kotlin.test.assertEquals
 
 class ComissionTest {
@@ -57,6 +53,16 @@ class ComissionTest {
 
         assertEquals(ERROR_LIMIT,result )
     }
+    @Test
+    fun testVisaDaNoLimit(){
+        val type ="Visa"
+        val transfer = 140_000
+        val previous = 250_000
+
+        val result = comission (type ,transfer, previous)
+
+        assertEquals(1050,result )
+    }
 
     @Test
     fun testMastercardMin(){
@@ -67,6 +73,16 @@ class ComissionTest {
         val result = comission (type ,transfer, previous)
 
         assertEquals(0,result )
+    }
+    @Test
+    fun testMastercardMin2(){
+        val type ="Mastercard"
+        val transfer = 250
+        val previous = 0
+
+        val result = comission (type ,transfer, previous)
+
+        assertEquals(21,result )
     }
     @Test
     fun testMastercardMax(){
@@ -103,6 +119,16 @@ class ComissionTest {
         val type ="Vk Pay"
         val transfer = 16_000
         val previous = 0
+
+        val result = comission (type ,transfer, previous)
+
+        assertEquals(ERROR_LIMIT_VK,result )
+    }
+    @Test
+    fun testVkPayLimit2(){
+        val type ="Vk Pay"
+        val transfer = 14_000
+        val previous = 32_000
 
         val result = comission (type ,transfer, previous)
 
